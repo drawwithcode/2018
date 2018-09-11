@@ -99,7 +99,6 @@ var bombs = [
 ]
 
 function setup() {
-  bg = loadImage("cc17.png");
   createCanvas(windowWidth, windowHeight);
   y = -height/2;
 
