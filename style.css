@@ -1,0 +1,304 @@
+@import url('assets/fonts/iAWriterDuospace.css');
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  --orange: #FF6818;
+  --green: #18FF68;
+  --purple: #6818FF;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-color: var(--purple);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'iA Writer Duospace';
+  font-weight: normal;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--orange);
+  line-height: 1.277rem;
+}
+
+canvas {
+  vertical-align: top;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+h2 {
+  font-size: 1.333rem;
+  line-height: 1.777rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.333rem;
+  line-height: 1.777rem;
+  margin: 0;
+  font-weight: 400;
+  color: var(--green);
+  padding-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.container {
+  padding: 0 2vw;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 20vw;
+  }
+}
+
+/* .container>div:first-child {
+  position: sticky;
+  top: 1rem;
+} */
+
+/* .container>div>p>a {
+  background-color: #6818ffa6;
+  padding: 0.1rem 0.3rem 0.2rem;
+} */
+
+#defaultCanvas0 {
+  position: fixed;
+  top: 0;
+  z-index: 0;
+}
+
+body>section {
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  display: none;
+  padding-top: 2rem;
+}
+
+section#home {
+  /* height: calc(100% - 70px - 2rem); */
+}
+
+@media (min-height: 600px) {
+  body>section#home {
+    height: calc(100% - 70px - 2rem);
+  }
+}
+
+footer {
+  z-index: 10;
+  position: relative;
+  display: grid;
+  /* grid-gap: 15px; */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px;
+  align-items: center;
+  padding: 0 5vw;
+  font-size: 0.777rem;
+  color: white;
+  line-height: 1rem;
+  margin-bottom: 10px;
+  padding-top: 35px;
+}
+
+@media (min-width: 768px) {
+  footer {
+    padding: 35px 20vw 0;
+  }
+}
+
+footer p {
+  margin: 0;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  footer>img {
+    height: 40px;
+  }
+}
+
+.cover {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.cover>img {
+  max-width: 70%;
+  position: relative;
+  left: 2%;
+}
+
+a {
+  color: var(--green);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul.nav, ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.nav li, li {
+  padding-top: 1rem;
+}
+
+li {
+  padding-top: 2rem;
+}
+
+ul.nav li:before {
+  content: '* ';
+}
+
+ul.nav li:after {
+  content: ' *';
+}
+
+ul.nav li a {
+  color: var(--green);
+}
+
+@media (min-width: 1025px) {
+  ul.nav li a {
+    color: var(--purple);
+  }
+}
+
+ul.nav li a:hover, ul.nav li:hover {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.lecture {
+  padding-top: 4.5rem;
+}
+
+.lecture>p {
+  font-size: 0.777rem;
+}
+
+.topics-list {}
+
+.topics-list>li {
+  padding-top: 0;
+  display: inline-block;
+  padding: 0 0.25rem 0.1rem;
+  margin: 0 0.25rem 0.5rem;
+  border: 1px solid var(--green);
+  border-radius: 1px;
+  font-size: 0.777rem;
+}
+
+.assignment>div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.assignment>div>p {
+  width: 100%;
+  color: var(--green);
+  cursor: pointer;
+}
+
+.assignment>div>p:hover {
+  text-decoration: underline;
+}
+
+.student-assignment {
+  margin: 0 7px;
+}
+
+.student-assignment img {
+  width: 72px;
+  border-radius: 3px;
+}
+
+.assignment-picture {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 3px;
+  background-size: cover;
+  background-position: center center;
+  background-color: var(--green);
+}
+
+@media (min-width: 540px) {
+  .student-assignment img {
+    width: 96px;
+  }
+}
+
+.student-name {
+  font-size: 0.666rem;
+  color: var(--green);
+  line-height: 1rem;
+}
+
+.project p {
+  color: var(--green);
+}
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: 60%;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 3px;
+}
+
+p.go-to-website a {
+  color: var(--orange) !important;
+}
+
+p.go-to-website a:hover {
+  text-decoration: underline;
+}
