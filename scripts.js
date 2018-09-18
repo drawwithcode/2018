@@ -30,10 +30,16 @@ function showInfo(data, tabletop) {
       })
       topicsList += topics
       topicsList += '</ul>'
-      let finalHtml = `<a target="_blank" href ="${d.link}">${d['lecture #']}. ${d.title}</a><p>${d.subtitle}</p>` + topicsList;
+      let finalHtml = `<a target="_blank" href ="">${d['lecture #']}. ${d.title}</a><p>${d.subtitle}</p>` + topicsList;
       return finalHtml
     })
     .merge(lecture)
+    .on('click', function(d){
+      if (d.link) {
+        window.open(d.link);
+      }
+
+    })
 
   // console.log(data.assignments.elements);
 
@@ -53,6 +59,7 @@ function showInfo(data, tabletop) {
       return d;
     })
     .on('click', function(d) {
+
       if (d3.select(this).classed("opened")) {
         d3.selectAll('.assignment>div>p:not(this)').classed('opened', false)
         d3.selectAll('.student-assignment').remove();
@@ -83,13 +90,16 @@ function showInfo(data, tabletop) {
           .attr('class', 'assignment-picture')
           .attr('target', '_blank')
           .attr('href', function(e) {
-            return `https://${e.github_username}.github.io/${e[d]}`;
+            let repo = e[d].split('/')
+            repo = repo[repo.length-1]
+            e.repo = repo
+            return `https://drawwithcode.github.io/${repo}`;
           })
           .style('background-image', function(e) {
-            return `url("https://raw.githubusercontent.com/${e.github_username}/${e[d]}/master/cover.png")`;
+            return `url("https://raw.githubusercontent.com/drawwithcode/${e.repo}/master/cover.png")`;
           })
         single.append('p').classed('student-name', true).html(function(e) {
-          return `${e.name.replace(/ /g, "<br/>")} <a style="color:var(--orange);" target="_blank" href="https://github.com/${e.github_username}/${e[d]}"> <&sol;> </a>`
+          return `${e['surname-name'].replace(/ /g, "<br/>")} <a style="color:var(--orange);" target="_blank" href="${e[d]}"> <&sol;> </a>`
         })
 
         single.transition()
@@ -103,9 +113,7 @@ function showInfo(data, tabletop) {
 
     })
 
-  // console.log(data.team_projects.elements)
-
-  let project = d3.select('#projects-list').selectAll('.project').data(data.team_projects.elements, function(d){ return d.id })
+  let project = d3.select('#projects-list').selectAll('.project').data(data["team projects"].elements, function(d){ return d.id })
   project.exit().remove();
   project = project.enter().append('li')
     .classed('project', true)
