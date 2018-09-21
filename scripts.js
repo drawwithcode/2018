@@ -96,7 +96,7 @@ function showInfo(data, tabletop) {
             return `https://drawwithcode.github.io/${repo}`;
           })
           .style('background-image', function(e) {
-            return `url("https://raw.githubusercontent.com/drawwithcode/${e.repo}/master/cover.png")`;
+            return `url("https://raw.githubusercontent.com/drawwithcode/${e.repo}/master/cover.png"),url("https://via.placeholder.com/150x150/18FF68/000?text=no+image")`;
           })
         single.append('p').classed('student-name', true).html(function(e) {
           return `${e['surname-name'].replace(/ /g, "<br/>")} <a style="color:var(--orange);" target="_blank" href="${e[d]}"> <&sol;> </a>`
