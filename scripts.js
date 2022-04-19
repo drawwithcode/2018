@@ -3,16 +3,6 @@ function selectSection(id) {
   d3.select(id).style('display', 'block');
   window.scrollTo(0,0);
 }
-selectSection('#home')
-var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1uKLFKf_ZIci6eTLRvzQnbBHc5h0cz2Q48PA_A2emtEE/edit?usp=sharing';
-
-function init() {
-  Tabletop.init({
-    key: publicSpreadsheetUrl,
-    callback: showInfo,
-    simpleSheet: false
-  })
-}
 
 function showInfo(data, tabletop) {
 
@@ -41,11 +31,9 @@ function showInfo(data, tabletop) {
 
     })
 
-  // console.log(data.assignments.elements);
-
   let studentAssignment;
 
-  let assignment = d3.select('#assignments-list').selectAll('.assignment').data(data.assignments.columnNames.slice(3, data.assignments.columnNames.length))
+  let assignment = d3.select('#assignments-list').selectAll('.assignment').data(data.assignments.elements.columns.slice(3, data.assignments.elements.columns.length))
   assignment.exit();
   assignment = assignment.enter().append('li')
     .classed('assignment', true)
@@ -145,4 +133,33 @@ function showInfo(data, tabletop) {
 
 
 }
+
+function init() {
+
+  Promise.all([
+    d3.tsv('./assets/Creative Coding 1819 Calendar, deliverableas, team projects - lectures.tsv'),
+    d3.tsv('./assets/Creative Coding 1819 Calendar, deliverableas, team projects - assignments.tsv'),
+    d3.tsv('./assets/Creative Coding 1819 Calendar, deliverableas, team projects - team projects.tsv')
+  ])
+  .then(([lectures, assignments, teamProjects]) =>  {
+    // Do your stuff. Content of both files is now available in stations and svg
+    const data = {
+      "lectures": {
+        "elements": lectures
+      },
+      "assignments": {
+        "elements": assignments
+      },
+      "team projects": {
+        "elements": teamProjects
+      }
+    }
+    showInfo(data)
+  });
+
+}
+
+
+selectSection('#home')
+
 window.addEventListener('DOMContentLoaded', init)
